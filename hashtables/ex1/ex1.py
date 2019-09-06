@@ -19,18 +19,22 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     YOUR CODE HERE
     """
-    for item in range(length):
-        print("item", item)
-        print("weights", weights[item])
+
+    dict = {}
+
+    for i in range(length):
+        print("item", i)
+        print("weights", weights[i])
         print("limit", limit)
 
-        diff = limit - weights[item]
-        match = hash_table_retrieve(ht, diff)
+        current = weights[i]
+        difference = limit - current
 
-        if match is not None:
-            return item, match
+        if difference in dict:
+            return i, dict[difference]
         else:
-            hash_table_insert(ht, weights[item], item)
+            dict[current] = i
+    return None
 
 
 def print_answer(answer):
